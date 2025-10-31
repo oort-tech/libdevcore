@@ -53,6 +53,9 @@ template<typename T> std::string toJS(T const& _i)
 	return stream.str();
 }
 
+std::string toHexBytes(dev::bytes const& data);
+std::string toHexQuantity(uint64_t value);
+
 enum class OnFailed { InterpretRaw, Empty, Throw };
 
 /// Convert string to byte array. Input parameter is hex, optionally prefixed by "0x".

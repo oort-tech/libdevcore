@@ -10,6 +10,16 @@
 namespace dev
 {
 
+std::string toHexBytes(dev::bytes const& data)
+{
+	return data.empty() ? std::string("0x") : toHexPrefixed(data);
+}
+
+std::string toHexQuantity(uint64_t value)
+{
+	return toJS(value);
+}
+
 bytes jsToBytes(std::string const& _s, OnFailed _f)
 {
 	try
