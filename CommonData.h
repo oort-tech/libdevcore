@@ -172,40 +172,6 @@ inline std::string toCompactHexPrefixed(u256 _val, unsigned _min = 0)
 	return toHexPrefixed(toCompactBigEndian(_val, _min));
 }
 
-/// remove return prefix 0;
-/// @returns 0x0 if _val=0
-inline std::string toCompactHexPrefixedTrim(u256 _val)
-{
-	std::string _str = toHex(toCompactBigEndian(_val, 1));
-	auto _point = _str.find_first_not_of("0");
-	if (_point != std::string::npos)
-		_str.erase(0, _point);
-	else
-		_str = "0";
-	return "0x" + _str;
-
-	//bytes _bytes = toCompactBigEndian(_val, 1);
-	//static char const* hexdigits = "0123456789abcdef";
-	//size_t off = 2;//"0x"
-	//std::string hex(_bytes.size() * 2 + off, '0');
-	//hex.replace(0, off, "0x");
-	//bool _trim = true;
-	//for (auto it : _bytes)
-	//{
-	//	if (_trim && it == 0)
-	//		continue;
-
-	//	auto _index = (it >> 4) & 0x0f;
-	//	if (!_trim || _index)
-	//		hex[off++] = hexdigits[_index];
-	//	//hex[off++] = hexdigits[(it >> 4) & 0x0f];
-	//	hex[off++] = hexdigits[it & 0x0f];
-
-	//	_trim = false;
-	//}
-	//return hex;
-}
-
 // Algorithms for string and string-like collections.
 
 /// Escapes a string into the C-string representation.
